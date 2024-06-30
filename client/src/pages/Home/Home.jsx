@@ -24,7 +24,7 @@ const Home = () => {
 
   const fetchData = async () => {
     try {
-      const res = axiosConfig.get("/api/v1/blog/allblogs");
+      const res = await axios.get("https://blog-space-r1kd.onrender.com/api/v1/blog/allblogs");
       const formattedBlogs = res.data.map((blog) => ({
         ...blog,
         formattedDate: new Date(blog.creationDate).toLocaleDateString("en-US", {
