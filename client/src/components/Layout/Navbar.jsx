@@ -91,14 +91,6 @@ const Navbarr = ({ darkMode, setDarkMode }) => {
                   <p className="font-semibold">{auth.user.name}</p>
                 </DropdownItem>
                 <DropdownItem
-                  key="profile"
-                  onClick={() => {
-                    navigate("/profile");
-                  }}
-                >
-                  My Profile
-                </DropdownItem>
-                <DropdownItem
                   key="addblog"
                   onClick={() => {
                     navigate("/addblog");
