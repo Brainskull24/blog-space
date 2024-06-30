@@ -16,14 +16,13 @@ const CategoryPage = () => {
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      const response = axiosConfig.get(
-        `/api/v1/blog/category/${category}`
-      );
-      setBlogs(response.data); 
+      const response = axiosConfig.get(`/api/v1/blog/category/${category}`);
+      // const response = await axios.get(`http://localhost:9999/api/v1/blog/category/${category}`);
+      setBlogs(response.data);
     } catch (error) {
       console.error("Error fetching blogs:", error);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -37,14 +36,14 @@ const CategoryPage = () => {
 
   return (
     <div className="flex flex-col justify-start items-center bg-white">
-      <div className="flex flex-col w-[70%] px-10 py-5">
+      <div className="flex flex-col w-full sm:w-[70%] px-10 py-5">
         <h1 className="font-bold text-xl">
           {category.charAt(0).toUpperCase() + category.slice(1)}
         </h1>
         {blogs.length === 0 ? (
           <p>No blogs found.</p>
         ) : (
-          <div className="grid gap-5 w-full py-5 grid-cols-3">
+          <div className="grid gap-5 w-full py-5 grid-cols-1 sm:grid-cols-3">
             {blogs.map((val) => {
               return (
                 <Card sx={{ maxWidth: 345 }} key={val._id}>

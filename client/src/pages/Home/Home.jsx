@@ -66,8 +66,8 @@ const Home = () => {
         <div className="flex sm:w-[70%] items-center justify-center px-10 py-5">
           <img src={home} alt="Home" />
         </div>
-        <div className="flex flex-col w-[70%] sm:px-10 sm:py-5">
-          <div className="flex gap-3">
+        <div className="flex flex-col w-[80%] sm:w-[70%] px-0 py-0 sm:px-10 sm:py-5">
+          <div className="flex gap-3 overflow-x-scroll sm:overflow-auto">
             <button
               className={`px-3 py-2 border rounded-lg ${
                 selectedCategory === ""
@@ -93,7 +93,7 @@ const Home = () => {
             ))}
           </div>
           <h1 className="font-bold text-xl mt-5">Featured Blogs</h1>
-          <div className="grid gap-5 w-full py-5 grid-cols-3">
+          <div className="grid gap-5 w-full sm: py-5 grid-cols-1 sm:grid-cols-3">
             {filteredBlogs.map((val, index) => (
               <Card key={index} sx={{ maxWidth: 345 }}>
                 <CardActionArea onClick={() => navigate(`/blogs/${val.slug}`)}>

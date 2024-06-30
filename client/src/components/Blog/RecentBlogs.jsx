@@ -22,9 +22,8 @@ const Blogs = () => {
 
   const fetchBlogDetails = async () => {
     try {
-      const { data } = axiosConfig.get(
-        `/api/v1/blog/getblog/${params.slug}`
-      );
+      const { data } = axiosConfig.get(`/api/v1/blog/getblog/${params.slug}`);
+      // const { data } = await axios.get(`http://localhost:9999/api/v1/blog/getblog/${params.slug}`);
       const formattedDate = new Date(
         data?.blog.creationDate
       ).toLocaleDateString("en-US", {
@@ -49,9 +48,7 @@ const Blogs = () => {
 
   const handleDelete = async () => {
     try {
-      axiosConfig.delete(
-        `/api/v1/blog/deleteblog/${id}`
-      );
+      axiosConfig.delete(`/api/v1/blog/deleteblog/${id}`);
       navigate("/recentblogs");
     } catch (error) {
       console.log(error);
@@ -64,10 +61,7 @@ const Blogs = () => {
 
   const handleSaveBlog = async (editedBlog) => {
     try {
-      axiosConfig.put(
-        `/api/v1/blog/update/${id}`,
-        editedBlog
-      );
+      axiosConfig.put(`/api/v1/blog/update/${id}`, editedBlog);
       // Refresh blog details after edit
       fetchBlogDetails();
     } catch (error) {
@@ -101,7 +95,11 @@ const Blogs = () => {
           <Button variant="contained" onClick={handleEdit}>
             Edit
           </Button>
-          <Button variant="outlined" startIcon={<DeleteIcon />} onClick={handleDelete}>
+          <Button
+            variant="outlined"
+            startIcon={<DeleteIcon />}
+            onClick={handleDelete}
+          >
             Delete
           </Button>
         </div>

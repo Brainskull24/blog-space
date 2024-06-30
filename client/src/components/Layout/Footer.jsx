@@ -6,17 +6,17 @@ const Footer = () => {
       <div className="flex px-10 w-[70%] py-5">
         <div className="flex flex-col sm:flex-row gap-8 w-full">
           <div className="flex flex-col w-full sm:w-1/4">
-            <h6 className="mb-4 flex items-center justify-center font-semibold md:justify-start">
-              About BlogVista
+            <h6 className="mb-4 flex items-center text-2xl sm:text-xl justify-center font-semibold md:justify-start">
+              About BlogSpace
             </h6>
-            <p className="">
-              BlogVista, your gateway to expressive blogging. Craft compelling
+            <p className="flex w-full sm:w-fit">
+              BlogSpace, your gateway to expressive blogging. Craft compelling
               stories, connect with readers, and explore diverse topics
               effortlessly.
             </p>
           </div>
           <div className="flex w-full sm:w-1/2 justify-evenly">
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full sm:w-fit">
               <h6 className="mb-4 flex font-semibold md:justify-start">
                 Categories
               </h6>
