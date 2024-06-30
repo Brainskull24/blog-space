@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Avatar from "@mui/material/Avatar";
 import { useNavigate } from "react-router-dom";
+import axiosConfig from "../../utils/axiosConfig";
 const Blogs = () => {
   const [blog, setBlog] = useState({});
   const params = useParams();
@@ -21,8 +22,8 @@ const Blogs = () => {
 
   const fetchBlogDetails = async () => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:9999/api/v1/blog/getblog/${params.slug}`
+      const { data } = axiosConfig.get(
+        `/api/v1/blog/getblog/${params.slug}`
       );
       const formattedDate = new Date(
         data?.blog.creationDate
@@ -48,8 +49,8 @@ const Blogs = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(
-        `http://localhost:9999/api/v1/blog/deleteblog/${id}`
+      axiosConfig.delete(
+        `/api/v1/blog/deleteblog/${id}`
       );
       navigate("/recentblogs");
     } catch (error) {
@@ -63,8 +64,8 @@ const Blogs = () => {
 
   const handleSaveBlog = async (editedBlog) => {
     try {
-      await axios.put(
-        `http://localhost:9999/api/v1/blog/update/${id}`,
+      axiosConfig.put(
+        `/api/v1/blog/update/${id}`,
         editedBlog
       );
       // Refresh blog details after edit

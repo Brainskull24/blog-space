@@ -16,8 +16,8 @@ const CategoryPage = () => {
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `http://localhost:9999/api/v1/blog/category/${category}`
+      const response = axiosConfig.get(
+        `/api/v1/blog/category/${category}`
       );
       setBlogs(response.data); 
     } catch (error) {
@@ -54,7 +54,7 @@ const CategoryPage = () => {
                     <CardMedia
                       component="img"
                       height="140"
-                      image={`http://localhost:9999/api/v1/blog/blogphoto/${val._id}`}
+                      image={`https://blog-space-r1kd.onrender.com/api/v1/blog/blogphoto/${val._id}`}
                       alt={val.title}
                     />
                     <CardContent className="flex gap-2 flex-col">

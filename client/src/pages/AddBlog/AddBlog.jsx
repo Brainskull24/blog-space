@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
+import axiosConfig from '../../utils/axiosConfig';
 const AddBlog = () => {
   const editor = useRef(null);
   const [title, setTitle] = useState('');
@@ -49,7 +48,7 @@ const AddBlog = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:9999/api/v1/blog/addblog', formData, {
+      const response = axiosConfig.post('/api/v1/blog/addblog', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

@@ -9,6 +9,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import axiosConfig from "../../utils/axiosConfig";
 const Home = () => {
   const [recentBlogs, setRecentBlogs] = useState([]);
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ const Home = () => {
       if (!token) {
         throw new Error("No token found");
       }
-      const { data } = await axios.get(
-        `http://localhost:9999/api/v1/blog/recentblogs`,
+      const { data } = axiosConfig.get(
+        `/api/v1/blog/recentblogs`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -49,7 +50,7 @@ const Home = () => {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={`http://localhost:9999/api/v1/blog/blogphoto/${val._id}`}
+                    image={`https://blog-space-r1kd.onrender.com/api/v1/blog/blogphoto/${val._id}`}
                     alt={val.title}
                   />
                   <CardContent className="flex gap-2 flex-col">

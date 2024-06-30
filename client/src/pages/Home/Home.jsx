@@ -8,7 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-
+import axiosConfig from "../../utils/axiosConfig";
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
@@ -24,7 +24,7 @@ const Home = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:9999/api/v1/blog/allblogs");
+      const res = axiosConfig.get("/api/v1/blog/allblogs");
       const formattedBlogs = res.data.map((blog) => ({
         ...blog,
         formattedDate: new Date(blog.creationDate).toLocaleDateString("en-US", {
@@ -34,7 +34,7 @@ const Home = () => {
         }),
       }));
       setBlogs(formattedBlogs);
-      setFilteredBlogs(formattedBlogs); // Initialize filteredBlogs with all blogs
+      setFilteredBlogs(formattedBlogs); 
       const categoriesSet = new Set(
         formattedBlogs.map((blog) => blog.category)
       );
@@ -101,7 +101,7 @@ const Home = () => {
                     component="img"
                     height="140"
                     style={{ objectFit: "cover" }}
-                    image={`http://localhost:9999/api/v1/blog/blogphoto/${val._id}`}
+                    image={`https://blog-space-r1kd.onrender.com/api/v1/blog/blogphoto/${val._id}`}
                     alt={val.title}
                   />
                   <CardContent className="flex gap-2 flex-col">

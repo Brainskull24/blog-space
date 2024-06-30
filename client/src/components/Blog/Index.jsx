@@ -4,6 +4,7 @@ import axios from "axios";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Avatar from "@mui/material/Avatar";
+import axiosConfig from "../../utils/axiosConfig";
 
 const Blogs = () => {
   const [blog, setBlog] = useState({});
@@ -17,8 +18,8 @@ const Blogs = () => {
 
   const fetchBlogDetails = async () => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:9999/api/v1/blog/getblog/${params.slug}`
+      const { data } = axiosConfig.get(
+        `/api/v1/blog/getblog/${params.slug}`
       );
 
       const formattedDate = new Date(
