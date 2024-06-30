@@ -14,7 +14,13 @@ const Home = () => {
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const maxTitleLength = 50;
+  const maxExcerptLength = 150;
   const navigate = useNavigate();
+
+  const truncateString = (str, maxLength) => {
+    return str.length > maxLength ? str.substring(0, maxLength) + "..." : str;
+  };
 
   const fetchData = async () => {
     try {
@@ -29,7 +35,9 @@ const Home = () => {
       }));
       setBlogs(formattedBlogs);
       setFilteredBlogs(formattedBlogs); // Initialize filteredBlogs with all blogs
-      const categoriesSet = new Set(formattedBlogs.map((blog) => blog.category));
+      const categoriesSet = new Set(
+        formattedBlogs.map((blog) => blog.category)
+      );
       setCategories(Array.from(categoriesSet));
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -62,7 +70,9 @@ const Home = () => {
           <div className="flex gap-3">
             <button
               className={`px-3 py-2 border rounded-lg ${
-                selectedCategory === "" ? "bg-blue-500 text-white" : "bg-gray-200"
+                selectedCategory === ""
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => handleCategoryFilter("")}
             >
@@ -72,7 +82,9 @@ const Home = () => {
               <button
                 key={category}
                 className={`px-3 py-2 border rounded-lg ${
-                  category === selectedCategory ? "bg-blue-500 text-white" : "bg-gray-200"
+                  category === selectedCategory
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200"
                 }`}
                 onClick={() => handleCategoryFilter(category)}
               >
@@ -84,12 +96,11 @@ const Home = () => {
           <div className="grid gap-5 w-full py-5 grid-cols-3">
             {filteredBlogs.map((val, index) => (
               <Card key={index} sx={{ maxWidth: 345 }}>
-                <CardActionArea
-                  onClick={() => navigate(`/blogs/${val.slug}`)}
-                >
+                <CardActionArea onClick={() => navigate(`/blogs/${val.slug}`)}>
                   <CardMedia
                     component="img"
                     height="140"
+                    style={{ objectFit: "cover" }}
                     image={`http://localhost:9999/api/v1/blog/blogphoto/${val._id}`}
                     alt={val.title}
                   />
@@ -108,10 +119,10 @@ const Home = () => {
                       variant="h7"
                       className="font-bold"
                     >
-                      {val.title}
+                      {truncateString(val.title, maxTitleLength)}
                     </Typography>
                     <Typography gutterBottom component="div" variant="p">
-                      {val.excerpt}
+                      {truncateString(val.excerpt, maxExcerptLength)}
                     </Typography>
                     <div className="flex gap-4 items-center"></div>
                   </CardContent>
