@@ -142,7 +142,7 @@ const Navbarr = ({ darkMode, setDarkMode }) => {
       <Navbar className="bg-white" isBordered >
         <NavbarContent
           as="div"
-          className="w-full px-20 items-center justify-evenly flex cursor-pointer"
+          className="w-full sm:px-20 lg:px-6 items-center justify-evenly flex cursor-pointer"
           justify="between"
         >
           <NavbarItem>

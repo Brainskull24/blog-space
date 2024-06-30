@@ -1,18 +1,18 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import axiosConfig from '../../utils/axiosConfig';
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import axiosConfig from "../../utils/axiosConfig";
 const AddBlog = () => {
   const editor = useRef(null);
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [content, setContent] = useState('');
-  const [category, setCategory] = useState('');
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [content, setContent] = useState("");
+  const [category, setCategory] = useState("");
   const [coverImage, setCoverImage] = useState(null);
-  const [excerpt, setExcerpt] = useState('');
+  const [excerpt, setExcerpt] = useState("");
   const navigate = useNavigate();
-  
+
   const toolbarOptions = [
     ["bold", "italic", "underline", "strike"],
     ["blockquote", "code-block"],
@@ -36,44 +36,44 @@ const AddBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const formData = new FormData();
-    formData.append('title', title);
-    formData.append('author', author);
-    formData.append('content', content);
-    formData.append('category', category);
-    formData.append('excerpt', excerpt);
+    formData.append("title", title);
+    formData.append("author", author);
+    formData.append("content", content);
+    formData.append("category", category);
+    formData.append("excerpt", excerpt);
     if (coverImage) {
-      formData.append('coverImage', coverImage);
+      formData.append("coverImage", coverImage);
     }
 
     try {
-      const response = axiosConfig.post('/api/v1/blog/addblog', formData, {
+      const response = axiosConfig.post("/api/v1/blog/addblog", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
 
-      console.log('Response:', response); // Log the response
+      console.log("Response:", response); // Log the response
 
       if (response && response.data) {
         alert(response.data.message);
-        navigate('/');
+        navigate("/");
       } else {
-        alert('Unexpected error occurred. Please try again.');
+        alert("Unexpected error occurred. Please try again.");
       }
     } catch (error) {
-      console.error('Error creating blog:', error);
-      alert('Failed to create blog. Please check your input and try again.');
+      console.error("Error creating blog:", error);
+      alert("Failed to create blog. Please check your input and try again.");
     }
   };
 
   return (
     <div className="flex w-full h-fit flex-col items-center justify-center px-10 py-5">
       <h1 className="flex text-2xl font-bold">Add Blog</h1>
-      <div className="flex flex-col w-[70%] px-10 py-5 h-fit space-y-5">
-        <div className="flex flex-col">
+      <div className="flex flex-col w-full lg:w-[70%] px-10 py-5 gap-5 ">
+        <div className="flex flex-col w-full">
           <label className="mb-1 text-lg font-semibold" htmlFor="author">
             Author Name
           </label>
@@ -145,19 +145,18 @@ const AddBlog = () => {
             theme="snow"
             value={content}
             onChange={setContent}
-            style={{height:"100px"}}
+            style={{ height: "100px" }}
           />
         </div>
-        <div className='flex'>
-
-        <button
-          type="submit"
-          className="w-fit flex px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          onClick={handleSubmit}
+        <div className="flex mt-10 lg:mt-0">
+          <button
+            type="submit"
+            className="w-fit flex px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onClick={handleSubmit}
           >
-          Create Blog
-        </button>
-          </div>
+            Create Blog
+          </button>
+        </div>
       </div>
     </div>
   );

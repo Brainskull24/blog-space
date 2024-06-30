@@ -63,10 +63,10 @@ const Home = () => {
   return (
     <>
       <div className="flex flex-col justify-start items-center bg-white">
-        <div className="flex w-[70%] items-center justify-center px-10 py-5">
+        <div className="flex sm:w-[70%] items-center justify-center px-10 py-5">
           <img src={home} alt="Home" />
         </div>
-        <div className="flex flex-col w-[70%] px-10 py-5">
+        <div className="flex flex-col w-[70%] sm:px-10 sm:py-5">
           <div className="flex gap-3">
             <button
               className={`px-3 py-2 border rounded-lg ${
