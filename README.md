@@ -4,27 +4,25 @@ BlogSpace is a versatile and modern blogging website that allows users to create
 
 ## Core Features
 
-- **CRUD Operations**: Implement create, read, update, and delete operations for blog posts.
-- **Rich Text Editor**: Integrate a rich text editor for creating and editing blog content.
-- **Theme Switcher**: Toggle between light and dark modes for a better user experience.
-- **Responsive UI**: Ensure the application is responsive across different screen sizes.
+- **CRUD Operations**: Implemented create, read, update, and delete operations for blog posts.
+- **Rich Text Editor**: Integrated a rich text editor for creating and editing blog content.
+- **Theme Switcher**: created a theme switcher to toggle between light and dark modes for a better user experience.
+- **Responsive UI**: Ensured the application is responsive across different screen sizes.
 
 ## Pages and Navigation
 
 ### HomePage
-- Display featured blogs with titles, excerpts, and publication dates.
-- Include a sidebar or navbar with categories (e.g., Technology, Travel).
+- Displays featured blogs with titles, excerpts, and publication dates.
+- Includes a navbar with categories (e.g., Technology, Travel).
 
 ### Category Pages
-- Create pages for each category, showing relevant blogs.
+- Created pages for each category, showing relevant blogs.
 
 ### Filtering and Search
-- Implement filtering by category and a search option.
+- Implemented filtering by category.
 
 ### Blog Details Page
-- Show full content, image, author, publication date, and metadata.
-
-## Backend Tasks
+- It Shows full content, image, author, publication date, and metadata.
 
 ### Technology Stack
 - Backend technology stack: Node.js with Express.
@@ -34,18 +32,18 @@ BlogSpace is a versatile and modern blogging website that allows users to create
 - Define schemas for blog posts, users, and permissions.
 
 ### User Authentication and Authorization
-- Implement user authentication and authorization using JWT.
-- Secure API endpoints to restrict CRUD operations to authenticated users.
+- Implemented user authentication and authorization using JWT.
+- Secured API endpoints to restrict CRUD operations to authenticated users.
 
 ### CRUD Operations
-- Implement CRUD operations for managing blog posts (Create, Read, Update, Delete).
+- Implemented CRUD operations for managing blog posts (Create, Read, Update, Delete).
 
 ### Error Handling
-- Implement error handling for API requests and responses.
-- Provide meaningful error messages to users in case of failures.
+- Implemented error handling for API requests and responses.
+- Provided meaningful error messages to users in case of failures.
 
 ### User Dashboard
-- After login, allow users to view their personal blogs.
+- After login, users can view their personal blogs.
 - Enable users to create, edit, and delete their blogs.
 
 ## Technologies Used
@@ -75,38 +73,38 @@ BlogSpace is a versatile and modern blogging website that allows users to create
 
 cd client
 npm install
-# or
+or
 yarn install
 
 3. **Navigate to server folder and install dependencies:**
 
-cd ../server
-npm install
-# or
-yarn install
+-cd ../server
+- npm install
+- or
+- yarn install
 
 4. **Configuration**
 Configure environment variables:
 
 Create a .env file in the server folder and add necessary environment variables:
 
-PORT= 
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
+- PORT= 
+- MONGO_URI=your_mongodb_uri
+- JWT_SECRET=your_jwt_secret
 
 5. **Start the development server:**
 
 In the server folder:
 
-npm run dev
-# or
-yarn dev
+- npm run dev
+  or
+- yarn dev
 
 In the client folder:
 
-npm run dev
-# or
-yarn dev
+- npm run dev
+  or
+- yarn dev
 
 6. **Open your browser:**
 
@@ -116,4 +114,4 @@ Visit http://localhost:5173 to see the app running.
 The project is deployed at:
 
 Frontend: [https://blogspace2.vercel.app](https://blogspace2.vercel.app/)
-Backend: [[https://](https://blog-space-r1kd.onrender.com)](https://blog-space-r1kd.onrender.com/)
+Backend: [https://blog-space-r1kd.onrender.com](https://blog-space-r1kd.onrender.com/)
