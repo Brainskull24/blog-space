@@ -16,7 +16,7 @@ const CategoryPage = () => {
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      const response = axiosConfig.get(`/api/v1/blog/category/${category}`);
+      const response = await axiosConfig.get(`/api/v1/blog/category/${category}`);
       // const response = await axios.get(`http://localhost:9999/api/v1/blog/category/${category}`);
       setBlogs(response.data);
     } catch (error) {

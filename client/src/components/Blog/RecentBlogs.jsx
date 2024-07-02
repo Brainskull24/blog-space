@@ -22,8 +22,7 @@ const Blogs = () => {
 
   const fetchBlogDetails = async () => {
     try {
-      const { data } = axiosConfig.get(`/api/v1/blog/getblog/${params.slug}`);
-      // const { data } = await axios.get(`http://localhost:9999/api/v1/blog/getblog/${params.slug}`);
+      const { data } = await axiosConfig.get(`/api/v1/blog/getblog/${params.slug}`);
       const formattedDate = new Date(
         data?.blog.creationDate
       ).toLocaleDateString("en-US", {

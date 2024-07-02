@@ -20,7 +20,7 @@ const Home = () => {
       if (!token) {
         throw new Error("No token found");
       }
-      const { data } = axiosConfig.get(`/api/v1/blog/recentblogs`, {
+      const { data } = await axiosConfig.get(`/api/v1/blog/recentblogs`, {
       // const { data } = await axios.get(`http://localhost:9999/api/v1/blog/recentblogs`, {
         headers: {
           Authorization: `Bearer ${token}`,

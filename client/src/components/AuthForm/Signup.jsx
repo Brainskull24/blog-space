@@ -27,7 +27,7 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    axiosConfig
+    await axiosConfig
       .post("/api/v1/auth/register", {
         name,
         email,

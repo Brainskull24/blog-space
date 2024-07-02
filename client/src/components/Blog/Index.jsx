@@ -18,7 +18,7 @@ const Blogs = () => {
 
   const fetchBlogDetails = async () => {
     try {
-      const { data } = axiosConfig.get(
+      const { data } = await axiosConfig.get(
         `/api/v1/blog/getblog/${params.slug}`
       );
 
